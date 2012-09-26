@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Executor.cs" />
-    <Compile Include="Generators\IGenerator.cs" />
-    <Compile Include="Generators\Text.cs" />
+    <Compile Include="Jokers\IJoker.cs" />
+    <Compile Include="Jokers\TextFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VS2012\vstst.cs" />
   </ItemGroup>

@@ -15,9 +15,9 @@ namespace TRX2Joker.Console
                 return;
 
             var filename = args[0];
-            var generator = args[1];
+            var joker = args[1];
 
-            new Executor(generator).Execute(filename);
+            new Executor(joker).Execute(filename);
         }
     }
 }

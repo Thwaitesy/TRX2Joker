@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRX2Joker.Core.Generators
+namespace TRX2Joker.Core.Jokers
 {
-    public class Text : IGenerator
+    public class TextFile : IJoker
     {
         public void Generate(TestRunType testRunType)
         {
@@ -15,7 +15,7 @@ namespace TRX2Joker.Core.Generators
 
         public string Name
         {
-            get { return "Text"; }
+            get { return "TextFile"; }
         }
     }
 }

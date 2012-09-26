@@ -5,27 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using TRX2Joker.Core.Generators;
+using TRX2Joker.Core.Jokers;
 
 namespace TRX2Joker.Core
 {
     public class Executor
     {
-        private IGenerator _generator;
+        private IJoker _joker;
 
-        public Executor(string generator)
+        public Executor(string joker)
         {
-            //TODO: Use reflection and find all the classes that implement IGenerator.
-            //Built in list of generators.
-            var generators = new List<IGenerator> 
+            //TODO: Use reflection and find all the classes that implement IJoker.
+            //Built in list of jokers.
+            var jokers = new List<IJoker> 
             { 
-                new TRX2Joker.Core.Generators.Text() 
+                new TRX2Joker.Core.Jokers.TextFile() 
             };
 
-            //Select the generator to use.
-            this._generator = generators.SingleOrDefault(x => x.Name == generator);
-            if (this._generator == null)
-                throw new ArgumentException("Unknown Generator", "generator");
+            //Select the joker to use.
+            this._joker = jokers.SingleOrDefault(x => x.Name == joker);
+            if (this._joker == null)
+                throw new ArgumentException("Unknown Joker", "joker");
         }
 
         public void Execute(string fileName)
@@ -35,8 +35,8 @@ namespace TRX2Joker.Core
             XmlSerializer xmlSer = new XmlSerializer(typeof(TestRunType));
             TestRunType testRunType = (TestRunType)xmlSer.Deserialize(fileStreamReader);
 
-            //Send the test run type to the generator
-            this._generator.Generate(testRunType);
+            //Send the test run type to the joker
+            this._joker.Generate(testRunType);
         }
     }
 }
